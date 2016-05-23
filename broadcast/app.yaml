@@ -1,0 +1,29 @@
+module: broadcast
+runtime: custom
+vm: true
+api_version: 1
+threadsafe: true
+
+manual_scaling:
+  instances: 1
+
+health_check:
+  check_interval_sec: 60
+  restart_threshold: 5
+
+handlers:
+- url: /worker
+  script: main.app
+- url: /inject
+  script: main.app
+- url: /_ah/.*
+  script: main.app
+  login: admin
+
+env_variables:
+  HLS_CHANNELS: 'cnn_turk,kanald'
+  HLS_MASTER_BASE_URL: 'https://storage.googleapis.com/hoydaa-tv-us-hls-master'
+  HLS_MEDIA_BASE_URL: 'https://storage.googleapis.com/hoydaa-tv-us-hls-media'
+  HLS_MEDIA_BUCKET: 'hoydaa-tv-us-hls-media'
+  HLS_SOURCE_BASE_URL: 'http://212.224.109.103/S2/HLS_LIVE'
+  LOOKAHEAD_IN_SECS: 15

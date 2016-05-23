@@ -1,0 +1,3 @@
+lxml==3.4.4
+m3u8==0.2.6
+GoogleAppEngineCloudStorageClient==1.9.22.1

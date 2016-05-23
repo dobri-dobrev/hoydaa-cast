@@ -1,0 +1,29 @@
+html, body {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+
+.mdl-grid {
+  max-width: 1080px;
+}
+
+.mdl-card {
+  width: 100%;
+}
+.mdl-card__title {
+  min-height: 200px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.for-bigger-blazes .mdl-card__title {
+  background-image: url('images/for_bigger_blazes.jpg');
+}
+.for-bigger-escapes .mdl-card__title {
+  background-image: url('images/for_bigger_escapes.jpg');
+}
+.for-bigger-joyrides .mdl-card__title {
+  background-image: url('images/for_bigger_joyrides.jpg');
+}
+.parisian-love .mdl-card__title {
+  background-image: url('images/parisian_love.jpg');
+}

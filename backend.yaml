@@ -1,0 +1,35 @@
+module: backend
+runtime: python27
+vm: true
+api_version: 1
+threadsafe: true
+
+manual_scaling:
+  instances: 1
+
+health_check:
+  check_interval_sec: 60
+  restart_threshold: 5
+
+handlers:
+- url: /assets
+  static_dir: assets
+
+- url: /_ah/.*
+  script: backend.app
+  login: admin
+
+- url: /.*
+  script: backend.app
+  login: required
+  secure: always
+
+libraries:
+- name: lxml
+  version: "2.3"
+
+env_variables:
+  GCS_BASE_URL: 'https://storage.googleapis.com'
+  GCS_BUCKET_PATH: '/hoydaa-tv-us'
+  HLS_BASE_URL: 'http://212.224.109.103/S2/HLS_LIVE'
+  WHITELISTED_NICKNAMES: 'alihan.iplik,cemgarih,utku.utkan,vtaylan'

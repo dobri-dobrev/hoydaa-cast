@@ -1,0 +1,53 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /player\.html
+  static_files: player.html
+  upload: player.html
+
+- url: /player\.js
+  static_files: player.js
+  upload: player.js
+
+- url: /player\.css
+  static_files: player.css
+  upload: player.css
+
+- url: /web-player
+  static_files: public_player/index.html
+  upload: public_player/index.html
+
+- url: /assets
+  static_dir: assets
+
+- url: /proxy/.*
+  script: proxy.app
+
+- url: /hls/.*
+  script: hls.app
+
+- url: /vast/.*
+  script: hls.app
+
+- url: /studio(/.*)?
+  script: studio.app
+  login: required
+  secure: always
+
+- url: /trigger(/.*)?
+  script: trigger_api.app
+
+libraries:
+- name: jinja2
+  version: latest
+- name: lxml
+  version: latest
+
+env_variables:
+  DFP_NETWORK_ID: 137915826
+  HLS_MASTER_BASE_URI: 'https://storage.googleapis.com/hoydaa-tv-us-hls-master'
+  HLS_MEDIA_BASE_URL: 'https://storage.googleapis.com/hoydaa-tv-us-hls-media'
+  LOOKAHEAD_IN_SECS: 15
+  USER_WHITELIST: 'alihan.iplik,cemgarih,dobrev.d10,utku.utkan,vtaylan'

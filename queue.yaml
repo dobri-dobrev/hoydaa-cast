@@ -1,0 +1,7 @@
+queue:
+- name: broadcast
+  rate: 1/s
+  target: broadcast
+- name: injection
+  rate: 1/s
+  target: broadcast
